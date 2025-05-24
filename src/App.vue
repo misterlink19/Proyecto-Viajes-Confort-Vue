@@ -1,7 +1,7 @@
   <template>
     <div>
       <!-- Barra de navegación -->
-      <Navbar :modoAdmin="modoAdmin" @adminClick="accederAdmin" />
+      <Navbar :modoAdmin="modoAdmin" @adminClick="accederAdmin"  @homeClick="resetAppToHome"/>
 
       <!-- Panel de administración -->
       <AdminPanel v-if="modoAdmin" @close="modoAdmin = false" @openProductModal="mostrarModalProducto = true"
@@ -253,7 +253,11 @@ const mostrarNotificacion = (mensaje, tipo) => {
 const removeToast = (id) => {
   toasts.value = toasts.value.filter(toast => toast.id !== id);
 };
-
+// Función para Restablecer la vista a "Inicio"
+const resetAppToHome = () => {
+  modoAdmin.value = false;           // Sale del modo admin
+  categoriaSeleccionada.value = null; // Muestra todas las categorías
+};
 // Funciones para manejar carrito
 // -------------------------------
 // Función para actualizar el stock de un producto en la lista de categorías

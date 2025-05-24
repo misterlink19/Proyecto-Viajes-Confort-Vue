@@ -142,7 +142,7 @@ const selectedCategoryToDelete = ref(null);
 const showDeleteWarning = ref(false);
 const detallesCategoriaAEliminar = ref(null);
 
-// 🚀 Resetear estado del modal cuando se muestra
+// Resetear estado del modal cuando se muestra
 watch(() => props.show, (visible) => {
   if (visible) {
     activeTab.value = 'agregar';
@@ -156,14 +156,14 @@ watch(() => props.show, (visible) => {
   }
 });
 
-// 🚀 Cargar detalles de categoría al seleccionar para eliminar
+// Cargar detalles de categoría al seleccionar para eliminar
 watch(selectedCategoryToDelete, (categoryId) => {
   const cat = categorias.value.find(c => c.id === categoryId);
   detallesCategoriaAEliminar.value = cat || null;
   showDeleteWarning.value = false; // Resetear advertencia al cambiar
 });
 
-// 🚀 Agregar Categoría
+// Agregar Categoría
 const handleAddCategorySubmit = () => {
   const nombre = addCategoryName.value.trim();
   if (nombre.length < 3) {
@@ -176,7 +176,7 @@ const handleAddCategorySubmit = () => {
   emit('hide');
 };
 
-// 🚀 Editar Categoría
+// Editar Categoría
 const handleEditCategoryChange = (e) => {
   const id = e.target.value;
   selectedCategoryToEdit.value = id;
@@ -197,12 +197,12 @@ const handleConfirmEditCategory = () => {
   emit('hide');
 };
 
-// 🚀 Cambiar categoría a eliminar
+//  Cambiar categoría a eliminar
 const handleDeleteCategoryChange = (e) => {
   selectedCategoryToDelete.value = Number(e.target.value);
 };
 
-// 🚀 Confirmación inicial para eliminar
+// Confirmación inicial para eliminar
 const handleInitiateDeleteCategory = () => {
   const cat = detallesCategoriaAEliminar.value;
   if (cat && cat.products && cat.products.length > 0) {
@@ -212,7 +212,7 @@ const handleInitiateDeleteCategory = () => {
   }
 };
 
-// 🚀 Confirmar eliminación definitiva
+// Confirmar eliminación definitiva
 const eliminarCategoriaDefinitivamente = () => {
   emit('deleteCategory', selectedCategoryToDelete.value);
   emit('notify', 'Categoría eliminada correctamente', 'danger');
@@ -223,7 +223,7 @@ const eliminarCategoriaDefinitivamente = () => {
   emit('hide');
 };
 
-// 🚀 Cancelar eliminación
+// Cancelar eliminación
 const handleCancelDelete = () => {
   showDeleteWarning.value = false;
 };

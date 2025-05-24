@@ -219,9 +219,9 @@ const categoriasIniciales = JSON.parse(localStorage.getItem("datosCategorias")) 
   },
 ];
 
-// Usamos nuestro hook de inventario para gestionar las categorías y productos
+// Usamos nuestro composable de inventario para gestionar las categorías y productos
 const { categorias, agregarProducto, editarProducto, eliminarProducto, agregarCategoria, editarCategoria, eliminarCategoria } = useInventario(categoriasIniciales);
-// Usamos el hook del carrito para gestionar la cesta
+// Usamos el composable del carrito para gestionar la cesta
 const { carrito, añadirAlCarrito, quitarDelCarrito, checkout } = useCarrito();
 
 // Computed para filtrar las categorías a mostrar según la selección del usuario
